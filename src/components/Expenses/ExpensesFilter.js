@@ -1,21 +1,20 @@
 import React from 'react';
-
 import './ExpensesFilter.css';
 
 const ExpensesFilter = (props) => {
 
-  const dateChangeHandler = event => {
-    const extenseData = {
-      year: event.target.value
+  const yearChangeHandler = e => {
+    const extenseYearData = {
+      year: e.target.value
     };
-    props.onAddSavedYear(extenseData);
+    props.onChangeYear(extenseYearData);
   };
 
   return (
     <div className='expenses-filter'>
       <div className='expenses-filter__control'>
         <label>Filter by year</label>
-        <select value={props.selected} onChange={dateChangeHandler}>
+        <select value={props.defaultYear} onChange={yearChangeHandler}>
           <option value='2022'>2022</option>
           <option value='2021'>2021</option>
           <option value='2020'>2020</option>

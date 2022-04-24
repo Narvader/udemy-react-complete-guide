@@ -1,0 +1,40 @@
+Rendering list of data (Reproduciendo una lista de datos): 
+
+We need to create a dynamic expression in our code with "{}". Then we can execute inside Js.
+
+props.items (this is the array of Expenses coming from App.js). Map() creates a new array from an original array and transforms
+
+props.item.map(i => {
+    <ExpenseItem
+        key={i.id} 
+        id={i.id} 
+        title={i.title} 
+        amount={i.amount} 
+        date={i.date} 
+    />
+});
+
+Using stateful list --> which means it has states so it can be updated
+In App.js we can find the array.
+
+1- we get the const of the array and we add it to useState as parameter first. The we recover the array that the useState provides us.
+2- We create a new function that accepts a parameter (newExpense, for example) and inside we HAVE TO CREATE A NEW ARRAY. So we get the setFunctionFromUsestate and add a parameter call prevExpenses.
+3- Inside of it we return an array --> return [newExpense, ...prevExpenses]; <-- THAT'S IT!!
+4- After that we have to give a prop onAddExpense to the component child and give him the setFunctionFromUsestate.
+5- Inside the children where we create the new expense we give him the function so we can get the info.
+
+
+Conditional content
+
+Rendering different outputs under different conditions. Adding a dynamic expression again {} (we have to put it inside the return so it makes it dynamic). We can use a ternary expression there.
+
+if(props.items.length === 0) {
+        return <h2 className="expenses-list__fallback">Found no expenses.</h2>
+    }
+
+The key here is the RETURN word.
+
+Other way of use it is with the && operator. When the first expression is true it returns the second part.
+
+
+In style tag we have to pass an object. First {} is in order to make dynamic, but the second is becouse React wants an object.
